@@ -1,5 +1,5 @@
 angular.module("mainApp")
-.controller("activityDetailController", function($scope, $routeParams, initService, connectDBService, dataService){
+.controller("activityDetailController", function($scope, $routeParams, initService, connectDBService, localStorageService){
 	console.log("Ctrl of this page: activityDetailController");
 	initService.setView();
 
@@ -10,17 +10,12 @@ angular.module("mainApp")
 	};
 	$scope.activityItem = {};
 	
-	if(!$.isEmptyObject(dataService.savedData)){
-		angular.copy(dataService.savedData, $scope.activityItem);
-		appendImageGallery($scope.activityItem["activity_image_url_list"]);
-	}
-	else{
-		connectDBService.query(ajaxUrl, param).success(function(response){
-			$.each(response, function(obj, item){
-				angular.copy(item, $scope.activityItem);
-				$("#gallery").hide();
-			});
-		});
+	if(localStorageService.isSupported){
+		if(!$.isEmptyObject(localStorageService.get("activityItem"))){
+				angular.copy(localStorageService.get("activityItem"), $scope.activityItem);
+				appendImageGallery($scope.activityItem["activity_image_url_list"]);
+				console.log(localStorageService.get("activityItem"));
+		}
 	}
 
 	function appendImageGallery(activityImageUrlList){

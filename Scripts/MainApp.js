@@ -1,4 +1,4 @@
-angular.module("mainApp", ["ngRoute"]);
+angular.module("mainApp", [ "ngRoute", "LocalStorageModule" ]);
 
 angular.module("mainApp")
 .config(function($routeProvider){

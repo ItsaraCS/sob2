@@ -21,6 +21,7 @@
 		<!--AngularJS JavaScript-->
 		<script type="text/javascript" src="Scripts/AngularJS/angular.min.js"></script>
 		<script type="text/javascript" src="Scripts/AngularJS/angular-route.min.js"></script>
+		<script type="text/javascript" src="Scripts/AngularJS/angular-local-storage.min.js"></script>
 		<!--UniteGallery CSS & JavaScript-->
 		<link rel="stylesheet" type="text/css" href="Scripts/UniteGallery/dist/css/unite-gallery.css">
 		<script type="text/javascript" src="Scripts/UniteGallery/dist/js/unitegallery.min.js"></script>

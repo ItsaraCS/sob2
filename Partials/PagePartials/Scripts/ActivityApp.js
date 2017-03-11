@@ -1,5 +1,5 @@
 angular.module("mainApp")
-.controller("activityController", function($scope, $routeParams, initService, connectDBService, dataService){
+.controller("activityController", function($scope, $routeParams, initService, connectDBService, localStorageService){
 	console.log("Ctrl of this page: activityController");
 	initService.setView();
 
@@ -53,12 +53,9 @@ angular.module("mainApp")
 	}
 	$scope.getDataPerPage(1);
 
-	//--Sharing data between controller
+	//--Sharing data by localStorageService
 	$scope.sendData = function(item){
-		dataService.sendData(item);
+		if(localStorageService.isSupported)
+			localStorageService.set("activityItem", item);
 	}
-
-	$scope.$on("sharedData", function(){
-		$scope.savedData = dataService.savedData;
-	});
 });
