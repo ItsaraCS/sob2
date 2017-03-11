@@ -81,10 +81,13 @@ angular.module("mainApp")
 	var dataService = {};
 
 	//--Sharing data between controller
-	dataService.savedData = {};
-	dataService.sendData = function(item){
-		this.savedData = item;
-		$rootScope.$broadcast("sharedData");
+	dataService.sharedData = {};
+	dataService.setSharedData = function(item){
+		this.sharedData = item;
+	}
+
+	dataService.getSharedData = function(){
+		return this.sharedData;
 	}
 
 	dataService.filterUseObj = function(obj, filterKey){
